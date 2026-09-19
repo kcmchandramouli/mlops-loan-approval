@@ -31,6 +31,8 @@ services:
       dockerfile: ../docker/Dockerfile.local.model
     ports:
       - "5000:5000"
+    volumes:
+      - ./model:/app
 
   loan-monitor:
     build:

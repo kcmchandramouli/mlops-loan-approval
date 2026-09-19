@@ -1,10 +1,8 @@
 import os
-import pickle
+import joblib
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
 import numpy as np
 import pandas as pd
@@ -12,9 +10,8 @@ import time
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
 
-# Load model
-with open(MODEL_PATH, "rb") as f:
-    model = pickle.load(f)
+# Load model (saved with joblib.dump in modelling_refactor.py)
+model = joblib.load(MODEL_PATH)
 
 # The exact features the model was trained on
 REQUIRED_COLUMNS = [
